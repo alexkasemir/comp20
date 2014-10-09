@@ -1,0 +1,15 @@
+#lyrics {
+	font-style: italic;
+	text-align: center;
+}
+
+#music_video {
+	display: block;
+	margin: 0 auto;
+}
+
+#title {
+	text-align: center;
+	font-weight: bold;
+	font-family: Impact, Charcoal, sans-serif;
+}

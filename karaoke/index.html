@@ -18,17 +18,15 @@
 		var v = document.getElementById("music_video");
 		var lyrics = document.getElementById("lyrics");
 		var cTime = v.currentTime;
-		if (cTime > 5 && cTime < 35){
+		if (cTime > 5.5 && cTime < 35){
 			lyrics.innerHTML = "<p>" + 
 			"Oh, I could hide 'neath the wings" + "<br>" + 
 			"Of the bluebird as she sings." + "<br>" + 
 			"The six o'clock alarm would never ring." + "<br>" + 
 			"But it rings and I rise," + "<br>" +
 			"Wipe the sleep out of my eyes." + "<br>" +
-			"My shavin' razor's cold and it stings." + "</p>";
-			var img = new Image();
-			img.src = "bluebird.jpg";
-			document.body.appendChild(img);
+			"My shavin' razor's cold and it stings." + "</p>" +
+			'<img src="bluebird.jpg" alt="BlueBird">';
 		}
 		else if (cTime > 35 && cTime < 54) {
 			lyrics.innerHTML = "<p>" + 
@@ -58,10 +56,10 @@
 			"To a daydream believer" + "<br>" +
 			"And a homecoming queen." +  "</p>";
 		}
-		else if(cTime > 120 && cTime < 128) {
+		else if(cTime > 120 && cTime < 127.5) {
 			lyrics.innerHTML = '<img src="playing_music.png" alt="Hamster flute" style="width:304px;height:228px">';
 		}
-		else if(cTime > 128 && cTime < 168) {
+		else if(cTime > 127.5 && cTime < 168) {
 			lyrics.innerHTML = "<p>" +
 			"Cheer up, Sleepy Jean." + "<br>" +
 			"Oh, what can it mean." + "<br>" +
