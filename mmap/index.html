@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="wizarding.css" />
+        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true">
+        </script>
+        <script type="text/javascript" >
+            var myLat = 42.3581;
+            var myLng = -71.0636;
+            var me = new google.maps.LatLng(myLat, myLng);
+            var myOptions = {
+                        zoom: 13, // The larger the zoom number, the bigger the zoom
+                        center: me,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+
+            function initialize() {
+                map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+                getMyLocation();
+            }
+
+
+            function getMyLocation() {
+                if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
+                    navigator.geolocation.getCurrentPosition(function(position) {
+                        myLat = position.coords.latitude;
+                        myLng = position.coords.longitude;
+                        drawMap();
+                    });
+                }
+                else {
+                    alert("Geolocation is not supported by your web browser.  What a shame!");
+                }
+            }
+            google.maps.event.addDomListener(window, 'load', initialize);
+
+        </script>
+    </head>
+    <body>
+    <div id="map-canvas"></div>
+    </body>
+</html>
