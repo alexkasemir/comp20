@@ -25,13 +25,28 @@
                     navigator.geolocation.getCurrentPosition(function(position) {
                         myLat = position.coords.latitude;
                         myLng = position.coords.longitude;
-                        drawMap();
+                        reqLocs();
                     });
                 }
                 else {
                     alert("Geolocation is not supported by your web browser.  What a shame!");
                 }
             }
+
+            function reqLocs() {
+                me = new google.maps.LatLng(myLat, myLng);
+                
+                // Update map and go to me
+                map.panTo(me);
+                var myInfo = {"login" : "Spot", "lat" : myLat, "lng" : myLng};
+
+                request = new XMLHttpRequest();
+                request.open("post", "http://chickenofthesea.herokuapp.com/sendLocation", true);
+                request.onreadystatechange = dataReady; //need to write this
+                request.send(myInfo);
+
+            }
+
             google.maps.event.addDomListener(window, 'load', initialize);
 
         </script>
