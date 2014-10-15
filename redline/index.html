@@ -20,10 +20,18 @@
                 getMyLocation();
             }
 
-            function getTrains () {
-
+            /* 
+            function markTrains () {
+                    var marker = new google.maps.Marker({
+                    map: map,
+                    position: trains.something
+                })
             }
+            */
 
+            /*
+            Tried to implement finding "me" however Chrome was not liking it
+             */
             function getMyLocation() {
               /*  if (navigator.geolocation) { // the navigator.geolocation object is supported on your browser
                     navigator.geolocation.getCurrentPosition(function(position) {
@@ -37,8 +45,6 @@
                 }*/
             }
             function getTrains() {
-                me = new google.maps.LatLng(myLat, myLng);
-                map.panTo(me);
                 request.open("get", "http://developer.mbta.com/lib/rthr/red.json", true);
                 request.onreadystatechange = function () 
                 {
