@@ -4,10 +4,10 @@
         <link rel="stylesheet" href="google_style.css" />
         <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=true">
         </script>
-        <script type="text/javascript">
+        <script type="text/javascript" >
             var myLat = 42.3581;
             var myLng = -71.0636;
-            //request = new XMLHttpRequest();
+            request = new XMLHttpRequest();
             //Maybe just find the lat, lang of Boston instead of getting mine
             var me = new google.maps.LatLng(myLat, myLng);
             var myOptions = {
@@ -20,17 +20,8 @@
                 getMyLocation();
             }
 
-            function createCORSRequest(method, url){
-                var xhr = new XMLHttpRequest();
-                if ("withCredentials" in xhr){
-                    xhr.open(method, url, true);
-                } else if (typeof XDomainRequest != "undefined"){
-                    xhr = new XDomainRequest();
-                    xhr.open(method, url);
-                } else {
-                    xhr = null;
-                }
-                return xhr;
+            function getTrains () {
+
             }
 
             function getMyLocation() {
@@ -46,16 +37,20 @@
                 }*/
             }
             function getTrains() {
-                console.log("in getTrains");
                 me = new google.maps.LatLng(myLat, myLng);
-                request = createCORSRequest("get", "http://developer.mbta.com/lib/rthr/red.json");
+                map.panTo(me);
+                request.open("get", "http://developer.mbta.com/lib/rthr/red.json", true);
                 request.onreadystatechange = function () 
                 {
                     if (request.readystate == 4 && request.status == 200)
                     {
-                        console.log("in this thing");
+                        alert("I somehow did it");
                         trains = JSON.parse(request.responseText);
-                        console.log(trains);
+                        markTrains();
+                    }
+                    else if(request.status == 0)
+                    {
+                        alert("Origin problem, sorry can't display trains!");
                     }
                 }
                 request.send();
