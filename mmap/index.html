@@ -64,6 +64,7 @@
             }
 
             function displayStudents() {
+                var markers = [];
                 var studentA = locations["students"];
                 var length = studentA.length;
                 for(i = 0; i < length; i++){
@@ -75,21 +76,22 @@
                     var contentString = '<div id="content">'+
                                         '<h1>Login: ' + login + '</h1>'+
                                         '<div id="bodyContent">' +
-                                        '<p><b>Latitude: </b>' + lat + '</br>'
-                                        '<b>Longitude: </b>' + lng + '</br>'
+                                        '<p><b>Latitude: </b>' + lat + '</br>' +
+                                        '<b>Longitude: </b>' + lng + '</br>' +
                                         '<b>Timetamp: </b>' + stamp + '</br></p>'+
                                         '</div>'+
                                         '</div>';
                     var infowindow = new google.maps.InfoWindow({
                         content: contentString
                     });
-                    var marker = new google.maps.Marker({
+                    var temp = new google.maps.Marker({
                     map: map,
                     position: position,
                     title: login
-                    })
-                    google.maps.event.addListener(marker, 'click', function() {
-                        infowindow.open(map,marker);
+                    });
+                    markers.push(temp);
+                    google.maps.event.addListener(markers[i], 'click', function() {
+                        infowindow.open(map,markers[i]);
                     }); 
                 }
             }
