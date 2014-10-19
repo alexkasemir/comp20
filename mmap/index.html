@@ -51,25 +51,12 @@
                 
                 // Update map and go to me
                 map.panTo(me);
-                var contentString = '<div id="content">'+
-                                        '<h1>Login: Spot</h1>'+
-                                        '<div id="bodyContent">' +
-                                        '<p><b>Latitude: </b>' + myLat + '</br>' +
-                                        '<b>Longitude: </b>' + myLng + '</br>' +
-                                        '</p>'+
-                                        '</div>'+
-                                        '</div>';
-                var me_marker = new google.maps.Marker({
+                me_marker = new google.maps.Marker({
                         map: map,
                         position: me,
                         icon: 'Spot.jpg',
                         html: contentString
                         });
-
-                google.maps.event.addListener(me_marker, 'click', function() {
-                        infowindow.setContent(this.html);
-                        infowindow.open(map, this);
-                    }); 
 
                 request = new XMLHttpRequest();
                 request.open("post", "http://chickenofthesea.herokuapp.com/sendLocation", true);
@@ -97,14 +84,19 @@
                                         '<b>Timetamp: </b>' + stamp + '</br></p>'+
                                         '</div>'+
                                         '</div>';
-                    
-                    var temp = new google.maps.Marker({
-                        map: map,
-                        position: position,
-                        title: login,
-                        html: contentString
-                    });
-                    markers.push(temp);
+                    if(i == 0)
+                    {
+                        me_marker.html = contentString;
+                        markers.push(me_marker);
+                    }else{
+                        var temp = new google.maps.Marker({
+                            map: map,
+                            position: position,
+                            title: login,
+                            html: contentString
+                        });
+                        markers.push(temp);
+                    }
 
                     google.maps.event.addListener(markers[i], 'click', function() {
                         
@@ -152,7 +144,7 @@
                         case "batman":
                             img = 'batman.png';
                             break;
-                    };
+                    }
                     var temp = new google.maps.Marker({
                         map: map,
                         position: position,
@@ -161,10 +153,10 @@
                         html: contentString
                     });
                     cmarkers.push(temp);
-                    // google.maps.event.addListener(cmarkers[i], 'click', function() {
-                    //     infowindow.setContent(this.html);
-                    //     infowindow.open(map, this);
-                    // }); 
+                    google.maps.event.addListener(cmarkers[i], 'click', function() {
+                        infowindow.setContent(this.html);
+                        infowindow.open(map, this);
+                    }); 
                 }
 
             }
