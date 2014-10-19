@@ -72,15 +72,12 @@
                     var login = studentA[i].login;
                     var stamp = studentA[i].created_at;
                     var position = new google.maps.LatLng(lat, lng);
-
                     var contentString = '<div id="content">'+
-                                        '<div id="siteNotice">'+
-                                        '</div>'+
                                         '<h1>Login: ' + login + '</h1>'+
-                                        '<div id="bodyContent">'+
-                                        '<p><b>Latitude: </b>' + lat + '<br>'
-                                        '<b>Longitude: </b>' + lng + '<br>'
-                                        '<b>Timetamp: </b>' + stamp + '<br></p>'+
+                                        '<div id="bodyContent">' +
+                                        '<p><b>Latitude: </b>' + lat + '</br>'
+                                        '<b>Longitude: </b>' + lng + '</br>'
+                                        '<b>Timetamp: </b>' + stamp + '</br></p>'+
                                         '</div>'+
                                         '</div>';
                     var infowindow = new google.maps.InfoWindow({
@@ -88,7 +85,8 @@
                     });
                     var marker = new google.maps.Marker({
                     map: map,
-                    position: position
+                    position: position,
+                    title: login
                     })
                     google.maps.event.addListener(marker, 'click', function() {
                         infowindow.open(map,marker);
