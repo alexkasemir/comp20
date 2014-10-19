@@ -93,7 +93,7 @@
                     markers.push(temp);
                     windows.push(infowindow);
                     google.maps.event.addListener(markers[i], 'click', function() {
-                        infowindow[i].open(map,markers[i]);
+                        windows[i].open(map,markers[i]);
                     }); 
                 }
             }
