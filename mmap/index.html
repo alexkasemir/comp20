@@ -36,7 +36,7 @@
                 if(request.readyState == 4 && request.status == 200){
                     locations = JSON.parse(request.responseText);
                     console.log(locations);
-                    //displayStudents();
+                    displayStudents();
                     //makeLines();
                     //dislayDistances();
 
@@ -61,6 +61,39 @@
                 request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 request.send("login=Spot&lat=" + myLat + "&lng=" + myLng);
                 
+            }
+
+            function displayStudents() {
+                var studentA = locations["students"];
+                var length = studentA.length;
+                for(i = 0; i < length; i++){
+                    var lat = studentA[i].lat;
+                    var lng = studentA[i].lng;
+                    var login = studentA[i].login;
+                    var stamp = studentA[i].created_at;
+                    var position = new google.maps.LatLng(lat, lng);
+
+                    var contentString = '<div id="content">'+
+                                        '<div id="siteNotice">'+
+                                        '</div>'+
+                                        '<h1>Login: ' + login + '</h1>'+
+                                        '<div id="bodyContent">'+
+                                        '<p><b>Latitude: </b>' + lat + '<br>'
+                                        '<b>Longitude: </b>' + lng + '<br>'
+                                        '<b>Timetamp: </b>' + stamp + '<br></p>'+
+                                        '</div>'+
+                                        '</div>';
+                    var infowindow = new google.maps.InfoWindow({
+                        content: contentString
+                    });
+                    var marker = new google.maps.Marker({
+                    map: map,
+                    position: position
+                    })
+                    google.maps.event.addListener(marker, 'click', function() {
+                        infowindow.open(map,marker);
+                    }); 
+                }
             }
 
             google.maps.event.addDomListener(window, 'load', initialize);
