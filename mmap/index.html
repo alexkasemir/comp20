@@ -65,6 +65,7 @@
 
             function displayStudents() {
                 var markers = [];
+                var infowindow = new google.maps.InfoWindow();
                 var studentA = locations["students"];
                 var length = studentA.length;
                 for(i = 0; i < length; i++){
