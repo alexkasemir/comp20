@@ -34,7 +34,7 @@
             }
             function dataReady() {
                 if(request.readyState == 4 && request.status == 200){
-                    console.log(request);
+                    console.log(locations);
                     //displayStudents();
                     //makeLines();
                     //dislayDistances();
@@ -51,7 +51,7 @@
                 var me_marker = new google.maps.Marker({
                         map: map,
                         position: me,
-                        icon: document.getElementById("spot"),
+                        icon: 'Spot.jpg'
                         })
 
                 request = new XMLHttpRequest();
@@ -59,6 +59,7 @@
                 request.onreadystatechange = dataReady; //need to write this
                 request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 request.send("login=Spot&lat=" + myLat + "&lng=" + myLng);
+                locations = JSON.parse(request.responseText);
             }
 
             google.maps.event.addDomListener(window, 'load', initialize);
@@ -67,6 +68,5 @@
     </head>
     <body>
     <div id="map-canvas"></div>
-    <div class="spot">&nbsp;</div>
     </body>
 </html>
