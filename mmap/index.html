@@ -82,17 +82,15 @@
                                         '<b>Timetamp: </b>' + stamp + '</br></p>'+
                                         '</div>'+
                                         '</div>';
-                    // var infowindow = new google.maps.InfoWindow({
-                    //     content: contentString
-                    // });
                     var temp = new google.maps.Marker({
-                    map: map,
-                    position: position,
-                    title: login
+                        map: map,
+                        position: position,
+                        title: login
                     });
                     markers.push(temp);
+                    markers[i].setMap(map);
 
-                    google.maps.event.addListener(markers[i], 'click', function() {
+                    google.maps.event.addListener(temp, 'click', function() {
                         infowindow.setContent(contentString);
                         infowindow.open(map, this);
                     }); 
