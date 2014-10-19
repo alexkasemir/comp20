@@ -119,6 +119,7 @@
                 characterA = locations["characters"];
                 var length = characterA.length;
                 for(i = 0; i < length; i++) {
+                    var img = 
                     var lat = characterA[i].loc.lat;
                     var lng = characterA[i].loc.note;
                     var name = characterA[i].name;
@@ -151,7 +152,7 @@
                         case "batman":
                             img = 'batman.png';
                             break;
-                    }
+                    };
                     var temp = new google.maps.Marker({
                         map: map,
                         position: position,
@@ -160,11 +161,10 @@
                         html: contentString
                     });
                     cmarkers.push(temp);
-                    google.maps.event.addListener(cmarkers[i], 'click', function() {
-                        
-                        infowindow.setContent(this.html);
-                        infowindow.open(map, this);
-                    }); 
+                    // google.maps.event.addListener(cmarkers[i], 'click', function() {
+                    //     infowindow.setContent(this.html);
+                    //     infowindow.open(map, this);
+                    // }); 
                 }
 
             }
