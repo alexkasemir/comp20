@@ -91,6 +91,7 @@
                     title: login
                     });
                     markers.push(temp);
+                    console.log(markers[i].title);
 
                     google.maps.event.addListener(markers[i], 'click', function() {
                         infowindow.setContent(contentString);
