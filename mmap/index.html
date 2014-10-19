@@ -92,8 +92,9 @@
                     });
                     markers.push(temp);
                     windows.push(infowindow);
+
                     google.maps.event.addListener(markers[i], 'click', function() {
-                        windows[i].open(map,markers[i]);
+                        (windows[i]).open(map,markers[i]);
                     }); 
                 }
             }
