@@ -65,6 +65,7 @@
 
             function displayStudents() {
                 var markers = [];
+                var windows = [];
                 var studentA = locations["students"];
                 var length = studentA.length;
                 for(i = 0; i < length; i++){
@@ -90,8 +91,9 @@
                     title: login
                     });
                     markers.push(temp);
+                    windows.push(infowindow);
                     google.maps.event.addListener(markers[i], 'click', function() {
-                        infowindow.open(map,markers[i]);
+                        infowindow[i].open(map,markers[i]);
                     }); 
                 }
             }
