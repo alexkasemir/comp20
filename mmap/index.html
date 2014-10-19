@@ -43,8 +43,7 @@
                 request = new XMLHttpRequest();
                 request.open("post", "http://chickenofthesea.herokuapp.com/sendLocation", true);
                 request.onreadystatechange = dataReady; //need to write this
-                request.send(myInfo);
-
+                request.send("login=Spot&lat=" + myLat + "&lng=" + myLng);
             }
 
             google.maps.event.addDomListener(window, 'load', initialize);
