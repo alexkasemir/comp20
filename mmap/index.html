@@ -38,7 +38,7 @@
                     locations = JSON.parse(request.responseText);
                     console.log(locations);
                     displayStudents();
-                    //displayChar();
+                    displayChar();
                     //makeLines();
                     //dislayDistances();
 
@@ -83,7 +83,7 @@
                 var markers = [];
                 var studentA = locations["students"];
                 var length = studentA.length;
-                for(i = 1; i < length; i++){
+                for(i = 0; i < length - 1; i++){
                     var lat = studentA[i].lat;
                     var lng = studentA[i].lng;
                     var login = studentA[i].login;
