@@ -37,8 +37,8 @@
                 if(request.readyState == 4 && request.status == 200){
                     locations = JSON.parse(request.responseText);
                     console.log(locations);
-                    displayStudents();
                     displayChar();
+                    displayStudents();
                     makeLines();
                     //dislayDistances();
 
@@ -189,10 +189,10 @@
                 for(i = 0; i < clength; i++) {
                     var me = me_marker.position;
                     var them = cmarkers[i].position;
-                    var lat2 = me.latitude;
-                    var lon2 = me.longitude;
-                    var lat1 = them.latitude;
-                    var lon1 = them.latitude;
+                    var lat2 = me.B;
+                    var lon2 = me.k;
+                    var lat1 = them.B;
+                    var lon1 = them.k;
                     var R = 6371;
                     var x1 = lat2-lat1;
                     var dLat = toRad(x1);  
