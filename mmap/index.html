@@ -86,7 +86,15 @@
                                         '</div>';
                     if(i == 0)
                     {
-                        contentString += getCharDist();
+                        contentString = '<div id="content">'+
+                                        '<h1>Login: ' + login + '</h1>'+
+                                        '<div id="bodyContent">' +
+                                        '<p><b>Latitude: </b>' + lat + '</br>' +
+                                        '<b>Longitude: </b>' + lng + '</br>' +
+                                        '<b>Timetamp: </b>' + stamp + '</br></p>'+
+                                        getCharDist() +
+                                        '</div>'+
+                                        '</div>';
                         me_marker.html = contentString;
                         markers.push(me_marker);
                     }else{
