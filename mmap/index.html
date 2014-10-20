@@ -100,7 +100,6 @@
                     }
 
                     google.maps.event.addListener(markers[i], 'click', function() {
-                        
                         infowindow.setContent(this.html);
                         infowindow.open(map, this);
                     }); 
@@ -222,6 +221,7 @@
                         '<b>' + distances[i].name + ': </b>' + distances[i].distance + '</br>';
                 }
                 toReturn += '</p>';
+                console.log(toReturn);
                 return toReturn;
             }
 
