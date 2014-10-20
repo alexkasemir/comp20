@@ -164,8 +164,8 @@
             function makeLines() {
                 for(i = 0; i < clength; i++) {
                     var lineCoordinates = [
-                        me["position"],
-                        cmarkers[i]["position"],
+                        me.position,
+                        cmarkers[i].position,
                     ];
                     var charLine = new google.maps.Polyline({
                         path: lineCoordinates,
