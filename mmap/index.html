@@ -162,11 +162,9 @@
             }
 
             function makeLines() {
-                console.log(cmarkers[0]);
-                console.log((cmarkers[0]).position);
                 for(i = 0; i < clength; i++) {
                     var lineCoordinates = [
-                        me.position,
+                        me_marker.position,
                         cmarkers[i].position,
                     ];
                     var charLine = new google.maps.Polyline({
