@@ -86,6 +86,7 @@
                                         '</div>';
                     if(i == 0)
                     {
+                        contentString += getCharDist();
                         me_marker.html = contentString;
                         markers.push(me_marker);
                     }else{
@@ -176,6 +177,51 @@
                     });
                     charLine.setMap(map);
                 }
+            }
+
+            function toRad(num) {
+                return num * Math.PI / 180;
+            }
+
+            function getCharDist() {
+                distances = [];
+                console.log(me_marker.position);
+                for(i = 0; i < clength; i++) {
+                    var me = me_marker.position;
+                    var them = cmarkers[i].position;
+                    var lat2 = me.latitude;
+                    var lon2 = me.longitude;
+                    var lat1 = them.latitude;
+                    var lon1 = them.latitude;
+                    var R = 6371;
+                    var x1 = lat2-lat1;
+                    var dLat = toRad(x1);  
+                    var x2 = lon2-lon1;
+                    var dLon = toRad(x2); 
+                    var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
+                            Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
+                            Math.sin(dLon/2) * Math.sin(dLon/2); 
+                    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+                    var d = R * c;
+
+                    distances.push({name: cmarkers[i].title, distance: d});
+                }
+                distances.sort(function (a, b)
+                        if (a.distance > b.distance) {
+                            return 1;
+                        }
+                        if (a.distance < b.distance) {
+                            return -1;
+                        }
+                        // a must be equal to b
+                        return 0;);
+                var toReturn =  '<p>';
+                for(i = 0; i < clength; i++) {
+                    toReturn += 
+                        '<b>' + distances[i].name + ': </b>' + distances[i].distance + '</br>';
+                }
+                toReturn += '</p>';
+                return toReturn;
             }
 
             google.maps.event.addDomListener(window, 'load', initialize);
