@@ -37,8 +37,8 @@
                 if(request.readyState == 4 && request.status == 200){
                     locations = JSON.parse(request.responseText);
                     console.log(locations);
-                    displayChar();
                     displayStudents();
+                    displayChar();
                     makeLines();
                     //dislayDistances();
 
