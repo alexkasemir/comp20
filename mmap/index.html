@@ -206,7 +206,7 @@
 
                     distances.push({name: cmarkers[i].title, distance: d});
                 }
-                distances.sort(function (a, b)
+                distances.sort(function (a, b){
                         if (a.distance > b.distance) {
                             return 1;
                         }
@@ -214,7 +214,8 @@
                             return -1;
                         }
                         // a must be equal to b
-                        return 0;);
+                        return 0;
+                    });
                 var toReturn =  '<p>';
                 for(i = 0; i < clength; i++) {
                     toReturn += 
