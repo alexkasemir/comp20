@@ -109,6 +109,7 @@
                         });
                         markers.push(temp);
                     }
+                    console.log(i);
                     console.log(markers[i]);
                     google.maps.event.addListener(markers[i], 'click', function() {
                         infowindow.setContent(this.html);
