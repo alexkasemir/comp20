@@ -96,9 +96,7 @@
                                         content +
                                         '</div>'+
                                         '</div>';
-                        console.log(contentString);
                         me_marker.html = contentString;
-                        console.log(me_marker);
                         markers.push(me_marker);
                     }else{
                         var temp = new google.maps.Marker({
@@ -109,8 +107,6 @@
                         });
                         markers.push(temp);
                     }
-                    console.log(i);
-                    console.log(markers[i]);
                     google.maps.event.addListener(markers[i], 'click', function() {
                         infowindow.setContent(this.html);
                         infowindow.open(map, this);
@@ -228,11 +224,10 @@
                         return 0;
                     });
                 var toReturn = '';
-                for(i = 0; i < clength; i++) {
-                    toReturn += '<b>' + distances[i].name + ': </b>' + distances[i].distance + '</br>';
+                for(j = 0; j < clength; j++) {
+                    toReturn += '<b>' + distances[j].name + ': </b>' + distances[j].distance + '</br>';
                 }
                 toReturn += '</p>';
-                console.log(toReturn);
                 return toReturn;
             }
 
