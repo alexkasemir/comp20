@@ -213,7 +213,8 @@
                             Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * 
                             Math.sin(dLon/2) * Math.sin(dLon/2); 
                     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-                    var d = R * c;
+                    var dkm = R * c;
+                    var d = dkm * 0.621371;
 
                     distances.push({name: cmarkers[i].title, distance: d});
                 }
@@ -229,7 +230,8 @@
                     });
                 var toReturn = '';
                 for(j = 0; j < clength; j++) {
-                    toReturn += '<b>' + distances[j].name + ': </b>' + distances[j].distance + '</br>';
+                    toReturn += '<b>' + distances[j].name + ': </b>' + distances[j].distance + 
+                                ' mi' + '</br>';
                 }
                 toReturn += '</p>';
                 return toReturn;
