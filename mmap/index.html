@@ -69,7 +69,7 @@
                 var markers = [];
                 var studentA = locations["students"];
                 var length = studentA.length;
-                for(i = 0; i < length - 1; i++){
+                for(i = 0; i < length; i++){
                     var lat = studentA[i].lat;
                     var lng = studentA[i].lng;
                     var login = studentA[i].login;
@@ -85,13 +85,15 @@
                                         '</div>';
                     if(i == 0)
                     {
+                        var content = getCharDist()
                         contentString = '<div id="content">'+
                                         '<h1>Login: ' + login + '</h1>'+
                                         '<div id="bodyContent">' +
                                         '<p><b>Latitude: </b>' + lat + '</br>' +
                                         '<b>Longitude: </b>' + lng + '</br>' +
                                         '<b>Timetamp: </b>' + stamp + '</br>' +
-                                        getCharDist() +
+                                        '<b>Distances: </b></br>' +
+                                        content +
                                         '</div>'+
                                         '</div>';
                         console.log(contentString);
