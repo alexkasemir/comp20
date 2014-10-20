@@ -33,6 +33,7 @@
                     alert("Geolocation is not supported by your web browser.  What a shame!");
                 }
             }
+
             function dataReady() {
                 if(request.readyState == 4 && request.status == 200){
                     locations = JSON.parse(request.responseText);
@@ -40,8 +41,6 @@
                     displayChar();
                     displayStudents();
                     makeLines();
-                    //dislayDistances();
-
                 }
 
             }
@@ -86,16 +85,15 @@
                                         '</div>';
                     if(i == 0)
                     {
-                        contentString = '<div id="content">'+
-                                        '<h1>Login: ' + login + '</h1>'+
-                                        '<div id="bodyContent">' +
-                                        '<p><b>Latitude: </b>' + lat + '</br>' +
-                                        '<b>Longitude: </b>' + lng + '</br>' +
-                                        '<b>Timetamp: </b>' + stamp + '</br></p>'+
-                                        getCharDist() +
-                                        '</div>'+
-                                        '</div>';
-                        console.log(contentString);
+                        // contentString = '<div id="content">'+
+                        //                 '<h1>Login: ' + login + '</h1>'+
+                        //                 '<div id="bodyContent">' +
+                        //                 '<p><b>Latitude: </b>' + lat + '</br>' +
+                        //                 '<b>Longitude: </b>' + lng + '</br>' +
+                        //                 '<b>Timetamp: </b>' + stamp + '</br></p>'+
+                        //                 getCharDist() +
+                        //                 '</div>'+
+                        //                 '</div>';
                         me_marker.html = contentString;
                         markers.push(me_marker);
                     }else{
@@ -108,6 +106,7 @@
                         markers.push(temp);
                     }
 
+                    console.log(markers[i]);
                     google.maps.event.addListener(markers[i], 'click', function() {
                         infowindow.setContent(this.html);
                         infowindow.open(map, this);
