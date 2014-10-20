@@ -39,7 +39,7 @@
                     console.log(locations);
                     displayStudents();
                     displayChar();
-                    //makeLines();
+                    makeLines();
                     //dislayDistances();
 
                 }
@@ -107,10 +107,10 @@
             }
 
             function displayChar() {
-                var cmarkers = [];
+                cmarkers = [];
                 characterA = locations["characters"];
-                var length = characterA.length;
-                for(i = 0; i < length; i++) {
+                clength = characterA.length;
+                for(i = 0; i < clength; i++) {
                     var img = null;
                     var lat = characterA[i].loc.latitude;
                     var lng = characterA[i].loc.longitude;
@@ -159,6 +159,23 @@
                     }); 
                 }
 
+            }
+
+            function makeLines() {
+                for(i = 0; i < clength; i++) {
+                    var lineCoordinates = [
+                        me["position"],
+                        cmarkers[i]["position"],
+                    ];
+                    var charLine = new google.maps.Polyline({
+                        path: lineCoordinates,
+                        geodesic: true,
+                        strokeColor: '#FF0000',
+                        strokeOpacity: 1.0,
+                        strokeWeight: 2
+                    });
+                    charLine.setMap(map);
+                }
             }
 
             google.maps.event.addDomListener(window, 'load', initialize);
