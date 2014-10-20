@@ -37,7 +37,6 @@
             function dataReady() {
                 if(request.readyState == 4 && request.status == 200){
                     locations = JSON.parse(request.responseText);
-                    console.log(locations);
                     displayChar();
                     displayStudents();
                     makeLines();
@@ -96,9 +95,7 @@
                                         content +
                                         '</div>'+
                                         '</div>';
-                        console.log(contentString);
                         me_marker.html = contentString;
-                        console.log(me_marker);
                         markers.push(me_marker);
                     }else{
                         var temp = new google.maps.Marker({
@@ -109,8 +106,6 @@
                         });
                         markers.push(temp);
                     }
-                    console.log(i);
-                    console.log(markers[i]);
                     google.maps.event.addListener(markers[i], 'click', function() {
                         infowindow.setContent(this.html);
                         infowindow.open(map, this);
@@ -196,7 +191,6 @@
 
             function getCharDist() {
                 distances = [];
-                console.log(me_marker.position);
                 for(var i = 0; i < clength; i++) {
                     var me = me_marker.position;
                     var them = cmarkers[i].position;
