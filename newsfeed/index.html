@@ -6,15 +6,29 @@
 	<title>My News Feed</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script>
+
+	// function load () {
+	// 	for (key in localStorage) {
+			
+	// 	}
+		
+	// }
 	  $(document).ready(function(){
+
 	  	$("input").on(
 	  		"change", function(){
 	  			console.log("i changed");
-	  			var txt = $("msg").val();
-	  			var time = new Date().getTime()
-	  			localStorage[time] = time.toString() + ": " + txt ;
+	  			var txt = $("input").val();
+
+	  			var time = new Date();
+	  			var prev = localStorage.getItem("list");
+	  			localStorage.removeItem("list");
+	  			var newitem = "<p>" time.toString() + " : " + txt +  "</p>\n";
+	  			localStorage.setItem("list", prev + newitem);
+	  			$("div#news").html(localStorage.getItem("list"));
 				}
 	  	);
+
 	  });
 	</script>
 </head>
