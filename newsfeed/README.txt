@@ -1,4 +1,4 @@
-Alex kasemir
+Alex Kasemir
 Lab 7: newsfeed
 
 A newsfeed was correctly imlemented with the most recent posts showing up first
