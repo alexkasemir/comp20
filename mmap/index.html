@@ -57,7 +57,7 @@
                         });
 
                 request = new XMLHttpRequest();
-                request.open("post", "http://chickenofthesea.herokuapp.com/sendLocation", true);
+                request.open("post", "https://immense-scrubland-6119.herokuapp.com/sendLocation", true);
                 request.onreadystatechange = dataReady; //need to write this
                 request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
                 request.send("login=Spot&lat=" + myLat + "&lng=" + myLng);
